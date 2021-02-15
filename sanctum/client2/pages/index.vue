@@ -17,7 +17,7 @@
             <input class="form-control" type="text" v-model="password">
         </div>
 
-        <b-button variant="primary" @click="login()">Login</b-button>
+        <b-button variant="primary" @click="loginnn()">Login</b-button>
 
         <br> <br> 
         <!-- <div v-if="err" class="alert alert-danger">Please Try again</div> -->
@@ -28,7 +28,7 @@
 
 <script>
 export default {
-    middleware: ["guest"],
+    // middleware: ["guest"],
     methods: {
       data() {
         return {
@@ -36,7 +36,7 @@ export default {
             password: '',
         }
       },
-      async login() {
+      async loginnn() {
           console.log('Login method invoked.');
           try{
             console.log("Trying to log in...");
@@ -48,11 +48,11 @@ export default {
             })
             if (this.$auth.loggedIn) {
               console.log("Logged in.");
-              this.$router.push(`/home`);
+              this.$router.push("/home");
             }
           } catch (error) {
             console.log(error)
-          } 
+          }
       },
     },
   async asyncData() {

@@ -1,13 +1,7 @@
 export default {
-  
-  // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
-  ssr: true,
-
-  // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
-
-  head: { 
-    title: 'nuxtapi',
+  // Global page headers: https://go.nuxtjs.dev/config-head
+  head: {
+    title: 'client2',
     htmlAttrs: {
       lang: 'en'
     },
@@ -37,6 +31,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
+    // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
@@ -45,6 +40,7 @@ export default {
     '@nuxtjs/proxy'
   ],
   auth: {
+    watchLoggedIn: true,
     strategies: {
       'laravelSanctum': {
         provider: 'laravel/sanctum',
@@ -64,17 +60,18 @@ export default {
           property: false
         }
       }
-    }
+    },
+    redirect: {
+      login: "/",
+      logout: "/home",
+    },
   },
-  redirect: {
-    login: "/home",
-    logout: "/",
-},
 router: {
   middleware: [
-    'guest',
+    // 'guest',
   ]
 },
+
 
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

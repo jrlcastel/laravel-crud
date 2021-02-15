@@ -13,6 +13,10 @@ export default {
         async logout() {
             try{
                 await this.$auth.logout();
+                if (!this.$auth.loggedIn) {
+                console.log("Logged out.");
+                this.$router.push("/");
+                }
             } catch (error) {
                 console.log(error)
             }
