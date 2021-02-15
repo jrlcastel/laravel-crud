@@ -21,6 +21,7 @@
 
 <script>
 
+import axios from 'axios';
 
 export default {
     methods: {
@@ -33,8 +34,11 @@ export default {
         const data = {
             name: this.name,
           };
-        const config = { headers: {'Content-Type': 'application/json'} };
-        const cashier = await this.$axios.post(`http://localhost:8000/api/cashier/add/`, data, config);
+        await axios({
+          method: 'post',
+          url: 'http://localhost:8000/api/cashier/add/',
+          data: data,
+        });
         this.$router.push("/cashiers");
       }
     },

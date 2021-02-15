@@ -27,6 +27,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    // '~/plugins/sales.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -44,7 +45,8 @@ export default {
   ],
 
   axios: {
-    proxy: true
+    // proxy: true,
+    // baseURL: 'http://127.0.0.1:8000'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

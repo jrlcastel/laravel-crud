@@ -21,6 +21,7 @@
 
 <script>
 
+import axios from 'axios';
 
 export default {
     methods: {
@@ -33,8 +34,13 @@ export default {
         const data = {
             name: this.name,
           };
-        const config = { headers: {'Content-Type': 'application/json'} };
-        const item = await this.$axios.post(`http://localhost:8000/api/item/add/`, data, config);
+        // const config = { headers: {'Content-Type': 'application/json'} };
+        await axios({
+          method: 'post',
+          url: `http://localhost:8000/api/item/add/`,
+          data: data,
+        });
+        // const item = await this.$axios.post(`http://localhost:8000/api/item/add/`, data, config);
         this.$router.push("/items");
       }
     },

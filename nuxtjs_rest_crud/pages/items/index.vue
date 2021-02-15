@@ -33,6 +33,7 @@
 
 <script>
 
+import axios from 'axios';
 
 export default {
   methods: {
@@ -40,7 +41,11 @@ export default {
       await this.$nuxt.refresh()
     },
     async del(id) {
-      await this.$axios.$delete(`http://localhost:8000/api/item/delete/${id}`)
+        await axios({
+          method: 'delete',
+          url: `http://localhost:8000/api/item/delete/${id}`,
+        });
+      // await this.$axios.$delete(`http://localhost:8000/api/item/delete/${id}`)
       await this.$nuxt.refresh()
     }
   },
