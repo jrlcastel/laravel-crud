@@ -4,13 +4,13 @@ import Router from 'next/router';
 
 async function upd(data, id) {
 
-    console.log(`http://localhost:8000/api/item/update/${id}`);
+    console.log(`${process.env.api_host}/api/item/update/${id}`);
 
     const axios = require('axios');
 
     await axios({
       method: 'put',
-      url: `http://localhost:8000/api/item/update/${id}`,
+      url: `${process.env.api_host}/api/item/update/${id}`,
       data: data,
     });
 
@@ -57,7 +57,7 @@ Id.getInitialProps = async ({ query }) => {
 
 const { id } = query;
 
-const res =  await axios.get(`http://localhost:8000/api/item/${id}`);
+const res =  await axios.get(`${process.env.api_host}/api/item/${id}`);
 return { data: res.data };
 
 }

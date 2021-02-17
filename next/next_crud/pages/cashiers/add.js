@@ -2,13 +2,13 @@ import Router from 'next/router';
 
 async function add(data) {
 
-    console.log(`http://localhost:8000/api/cashier/add`);
+    console.log(`${process.env.api_host}/api/cashier/add`);
 
     const axios = require('axios');
 
     await axios({
       method: 'post',
-      url: `http://localhost:8000/api/cashier/add`,
+      url: `${process.env.api_host}/api/cashier/add`,
       data: data,
     });
 

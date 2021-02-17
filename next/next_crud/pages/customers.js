@@ -3,7 +3,11 @@ import Router from 'next/router';
 
 async function del(id) {
   const axios = require('axios');
-  await axios.delete(`http://127.0.0.1:8000/api/customer/delete/${id}`);
+
+  await axios({
+    method: 'delete',
+    url: `${process.env.api_host}/api/customer/delete/${id}`,
+  });
   Router.push('/customers');
 }
 
@@ -61,6 +65,6 @@ export default function Home(props) {
 
 Home.getInitialProps = async function () {
   const axios = require('axios');
-  const res = await axios.get('http://127.0.0.1:8000/api/customers');
+  const res = await axios.get(`${process.env.api_host}/api/customers`);
   return { data: res.data };
 }

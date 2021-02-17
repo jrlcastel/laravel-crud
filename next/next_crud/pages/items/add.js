@@ -2,13 +2,13 @@ import Router from 'next/router';
 
 async function add(data) {
 
-    console.log(`http://localhost:8000/api/item/add`);
+    console.log(`${process.env.api_host}/api/item/add`);
 
     const axios = require('axios');
 
     await axios({
       method: 'post',
-      url: `http://localhost:8000/api/item/add`,
+      url: `${process.env.api_host}/api/item/add`,
       data: data,
     });
 

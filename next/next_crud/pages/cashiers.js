@@ -3,7 +3,7 @@ import Router from 'next/router';
 
 async function del(id) {
   const axios = require('axios');
-  await axios.delete(`http://127.0.0.1:8000/api/cashier/delete/${id}`);
+  await axios.delete(`${process.env.api_host}/api/cashier/delete/${id}`);
   Router.push('/cashiers');
 }
 
@@ -60,6 +60,6 @@ export default function Home(props) {
 
 Home.getInitialProps = async function () {
   const axios = require('axios');
-  const res = await axios.get('http://127.0.0.1:8000/api/cashiers');
+  const res = await axios.get(`${process.env.api_host}/api/cashiers`);
   return { data: res.data };
 }
