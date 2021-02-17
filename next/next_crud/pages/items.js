@@ -1,19 +1,19 @@
-import Head from 'next/head'
 import Router from 'next/router';
+import '../pages/config';
+const axios = require('axios');
 
-async function del(id) {
-  const axios = require('axios');
-  await axios.delete(`${process.env.api_host}/api/item/delete/${id}`);
-  Router.push('/items');
-}
+  async function del(id) {
+    await axios.delete(`/api/item/delete/${id}`);
+    Router.push('/items');
+  }
 
-async function edit(id) {
-  Router.push(`/items/edit/${id}`);
-}
+  async function edit(id) {
+    Router.push(`/items/edit/${id}`);
+  }
 
-async function add(id) {
-  Router.push(`/items/add`);
-}
+  async function add(id) {
+    Router.push(`/items/add`);
+  }
 
 export default function Home(props) {
   return (
@@ -25,10 +25,6 @@ export default function Home(props) {
         <button className="h-10 px-5 m-2 text-green-100 transition-colors duration-150 bg-green-700 rounded-lg focus:shadow-outline hover:bg-green-800" onClick={() => add()}>Add</button>
         </center>
         
-
-        
-
-
         <table className="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
             <thead>
                 <tr className="text-left border-b-2 border-gray-300">
@@ -59,8 +55,7 @@ export default function Home(props) {
   )
 }
 
-Home.getInitialProps = async function () {
-  const axios = require('axios');
-  const res = await axios.get(`${process.env.api_host}/api/items`);
-  return { data: res.data };
-}
+  Home.getInitialProps = async function () {
+    const res = await axios.get(`/api/items`);
+    return { data: res.data };
+  }

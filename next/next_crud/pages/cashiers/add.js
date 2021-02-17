@@ -1,17 +1,13 @@
 import Router from 'next/router';
+import '../config';
+const axios = require('axios');
 
 async function add(data) {
-
-    console.log(`${process.env.api_host}/api/cashier/add`);
-
-    const axios = require('axios');
-
     await axios({
       method: 'post',
-      url: `${process.env.api_host}/api/cashier/add`,
+      url: `/api/cashier/add`,
       data: data,
     });
-
     Router.push('/cashiers');
   }
 
@@ -19,34 +15,22 @@ async function add(data) {
 
 export default function Id(props) {
 
-// const router = useRouter();
-// const cashier = getData(router.query.id);
-// const name = cashier.data.name;
+    const addForm = async event => {
+        event.preventDefault();
+        const data = { name: event.target.name.value,  };
+        add(data);
+    }
 
-const addForm = async event => {
-
-    event.preventDefault();
-    console.log(event.target.name.value);
-
-    const data = {
-        name: event.target.name.value,
-    };
-
-    add(data);
-}
-
-return (
-    <div>
-        <br/> <br/>
-
-        <form onSubmit={addForm}>
-            <label htmlFor="name">Name: &nbsp; &nbsp; &nbsp; </label>
-            <input id="name" name="name" type="text" autoComplete="name" className="mb-3 py-3 px-4 border border-gray-400 focus:outline-none rounded-md focus:ring-1 ring-cyan-500" />
-            <br/>
-            <button type="submit" className="h-10 px-5 m-2 text-blue-100 transition-colors duration-150 bg-blue-700 rounded-lg focus:shadow-outline hover:bg-blue-800">ADD</button>
-        </form>
-
-    </div>
-);
+    return (
+        <div>
+            <br/> <br/>
+            <form onSubmit={addForm}>
+                <label htmlFor="name">Name: &nbsp; &nbsp; &nbsp; </label>
+                <input id="name" name="name" type="text" autoComplete="name" className="mb-3 py-3 px-4 border border-gray-400 focus:outline-none rounded-md focus:ring-1 ring-cyan-500" />
+                <br/>
+                <button type="submit" className="h-10 px-5 m-2 text-blue-100 transition-colors duration-150 bg-blue-700 rounded-lg focus:shadow-outline hover:bg-blue-800">ADD</button>
+            </form>
+        </div>
+    );
 }
 
