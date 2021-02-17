@@ -3,7 +3,15 @@ import '../pages/config';
 const axios = require('axios');
 
   async function del(id) {
-    await axios.delete(`/api/item/delete/${id}`);
+    // await axios.get('/sanctum/csrf-cookie').then( async (res) => {
+    await axios({
+      method: 'delete',
+      url: `/api/item/delete/${id}`,
+      // headers: { res }
+        // data: data,
+      // });
+    });
+    
     Router.push('/items');
   }
 
