@@ -3,9 +3,6 @@
 
         <ul>
             <li>
-                <nuxt-link to="/">Home</nuxt-link>
-            </li>
-            <li>
                 <nuxt-link to="/items">Items</nuxt-link>
             </li>
             <li>
@@ -19,6 +16,10 @@
             </li>
             <li>
                 <nuxt-link to="/cashiers">Cashiers</nuxt-link>
+            </li>
+            &nbsp; &nbsp; &nbsp; &nbsp; 
+            <li>
+                <nuxt-link to="/">Authentication</nuxt-link>
             </li>
         </ul>
 

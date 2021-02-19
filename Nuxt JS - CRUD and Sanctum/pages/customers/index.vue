@@ -50,7 +50,7 @@ export default {
     },
   },
   async asyncData({ $axios }) {
-    const customers = await $axios.$get('http://127.0.0.1:8000/api/customers')
+    const customers = await $axios.$get('http://127.0.0.1:8000/api/nuxtCustomers')
     return { customers }
   }
 }

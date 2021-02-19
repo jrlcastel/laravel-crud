@@ -95,30 +95,35 @@ Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth:san
 // });
 
 Route::get('/customers', [CustomerController::class, 'getCustomers'])->middleware('auth:sanctum');
+Route::get('/nuxtCustomers', [CustomerController::class, 'getCustomers']);
 Route::get('/customer/{id}', [CustomerController::class, 'getCustomerByID']);
 Route::post('/customer/add', [CustomerController::class, 'addCustomer']);
 Route::put('/customer/update/{id}', [CustomerController::class, 'updateCustomer']);
 Route::delete('/customer/delete/{id}', [CustomerController::class, 'deleteCustomer']);
 
 Route::get('/cashiers', [CashierController::class, 'getCashiers'])->middleware('auth:sanctum');
+Route::get('/nuxtCashiers', [CashierController::class, 'getCashiers']);
 Route::get('/cashier/{id}', [CashierController::class, 'getCashierByID']);
 Route::post('/cashier/add', [CashierController::class, 'addCashier']);
 Route::put('/cashier/update/{id}', [CashierController::class, 'updateCashier']);
 Route::delete('/cashier/delete/{id}', [CashierController::class, 'deleteCashier']);
 
 Route::get('/items', [ItemController::class, 'getItems'])->middleware('auth:sanctum');
+Route::get('/nuxtItems', [ItemController::class, 'getItems']);
 Route::get('/item/{id}', [ItemController::class, 'getItemByID']);
 Route::post('/item/add', [ItemController::class, 'addItem']);
 Route::put('/item/update/{id}', [ItemController::class, 'updateItem']);
 Route::delete('/item/delete/{id}', [ItemController::class, 'deleteItem']);
 
 Route::get('/receipts', [ReceiptController::class, 'getReceipts'])->middleware('auth:sanctum');
+Route::get('/nuxtReceipts', [ReceiptController::class, 'getReceipts']);
 Route::get('/receipt/{id}', [ReceiptController::class, 'getReceiptByID']);
 Route::post('/receipt/add', [ReceiptController::class, 'addReceipt']);
 Route::put('/receipt/update/{id}', [ReceiptController::class, 'updateReceipt']);
 Route::delete('/receipt/delete/{id}', [ReceiptController::class, 'deleteReceipt']);
 
 Route::get('/sales', [SaleController::class, 'getSales'])->middleware('auth:sanctum');
+Route::get('/nuxtSales', [SaleController::class, 'getSales']);
 Route::get('/sale/{id}', [SaleController::class, 'getSaleByID']);
 Route::post('/sale/add', [SaleController::class, 'addSale']);
 Route::put('/sale/update/{id}', [SaleController::class, 'updateSale']);

@@ -51,7 +51,7 @@ export default {
       }
     },
   async asyncData({ $axios }) {
-    const cashiers = await $axios.$get('http://127.0.0.1:8000/api/cashiers')
+    const cashiers = await $axios.$get('http://127.0.0.1:8000/api/nuxtCashiers')
     return { cashiers }
   }
 }

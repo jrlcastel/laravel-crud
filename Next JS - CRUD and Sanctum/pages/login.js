@@ -115,6 +115,8 @@ const submitLogout = async event => {
 
           <div>
           <br/> <br/>
+			Please see console logs for debugging messages.
+          <br/> <br/>
               <form onSubmit={submitLogin}>
                   <button type="submit" className="h-10 px-5 m-2 text-blue-100 transition-colors duration-150 bg-blue-700 rounded-lg focus:shadow-outline hover:bg-blue-800">Login</button>
               </form>

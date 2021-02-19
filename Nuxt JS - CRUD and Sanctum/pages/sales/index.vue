@@ -56,7 +56,7 @@ export default {
       }
     },
   async asyncData({ $axios }) {
-    const sales = await $axios.$get('http://localhost:8000/api/sales')
+    const sales = await $axios.$get('http://localhost:8000/api/nuxtSales')
     return { sales }
   }
 }
