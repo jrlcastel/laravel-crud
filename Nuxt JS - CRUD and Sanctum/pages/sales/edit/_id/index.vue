@@ -49,8 +49,8 @@ export default {
         this.$router.push("/sales");
       }
     },
-  async asyncData({params}) {
-    const sale = await this.$axios.get(`/api/sale/${params.id}`)
+  async asyncData({params, $axios}) {
+    const sale = await $axios.$get(`/api/sale/${params.id}`)
     const item_id = sale.item_id
     const receipt_id = sale.receipt_id
     return { sale, item_id, receipt_id }

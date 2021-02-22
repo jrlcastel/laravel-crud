@@ -49,8 +49,8 @@ export default {
         this.$router.push("/receipts");
       }
     },
-  async asyncData({params}) {
-    const receipt = await this.$axios.get(`/api/receipt/${params.id}`)
+  async asyncData({params, $axios}) {
+    const receipt = await $axios.$get(`/api/receipt/${params.id}`)
     const customer_id = receipt.customer_id
     const cashier_id = receipt.cashier_id
     const total = receipt.total

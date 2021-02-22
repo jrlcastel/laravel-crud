@@ -43,8 +43,8 @@ export default {
         this.$router.push("/customers");
       }
     },
-  async asyncData({params}) {
-    const customer = await $this.$axios.get(`/api/customer/${params.id}`)
+  async asyncData({params, $axios}) {
+    const customer = await $axios.$get(`/api/customer/${params.id}`)
     const namee = customer.name
     return { customer, namee }
   }

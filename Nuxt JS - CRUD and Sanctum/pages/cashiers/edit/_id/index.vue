@@ -43,8 +43,8 @@ export default {
         this.$router.push("/cashiers");
       }
     },
-  async asyncData({params}) {
-    const cashier = await this.$axios.get(`/api/cashier/${params.id}`)
+  async asyncData({params, $axios}) {
+    const cashier = await $axios.$get(`/api/cashier/${params.id}`)
     const namee = cashier.name
     return { cashier, namee }
   }
