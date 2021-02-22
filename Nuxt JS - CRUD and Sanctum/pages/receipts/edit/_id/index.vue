@@ -25,7 +25,7 @@
 
 <script>
 
-import axios from 'axios';
+import 'axios';
 
 export default {
     methods: {
@@ -39,18 +39,18 @@ export default {
             cashier_id: this.cashier_id,
             total: this.total,
           };
-        await axios({
+        await this.$axios({
           method: 'put',
-          url: `http://localhost:8000/api/receipt/update/${id}`,
+          url: `/api/receipt/update/${id}`,
           data: data,
         });
         // const config = { headers: {'Content-Type': 'application/json'} };
-        // const receipt = await this.$axios.put(`http://localhost:8000/api/receipt/update/${id}`, data, config);
+        // const receipt = await this.$this.$axios.put(`/api/receipt/update/${id}`, data, config);
         this.$router.push("/receipts");
       }
     },
-  async asyncData({params, $axios }) {
-    const receipt = await $axios.$get(`http://localhost:8000/api/receipt/${params.id}`)
+  async asyncData({params}) {
+    const receipt = await this.$axios.get(`/api/receipt/${params.id}`)
     const customer_id = receipt.customer_id
     const cashier_id = receipt.cashier_id
     const total = receipt.total

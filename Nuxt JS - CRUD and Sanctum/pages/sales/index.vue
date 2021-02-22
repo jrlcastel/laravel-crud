@@ -36,7 +36,7 @@
 
 <script>
 
-import axios from 'axios';
+import 'axios';
 
 export default {
     methods: {
@@ -47,16 +47,15 @@ export default {
         this.$router.push(`/sales/edit/${id}`);
       },
       async del(id) {
-        await axios({
+        await this.$axios({
           method: 'delete',
-          url: `http://localhost:8000/api/sale/delete/${id}`,
+          url: `/api/sale/delete/${id}`,
         });
-        // const s = await this.$axios.$delete(`http://localhost:8000/api/sale/delete/${id}`)
         await this.$nuxt.refresh()
       }
     },
-  async asyncData({ $axios }) {
-    const sales = await $axios.$get('http://localhost:8000/api/nuxtSales')
+  async asyncData({params, $axios}) {
+    const sales = await $axios.$get( `/api/nuxtSales` );
     return { sales }
   }
 }

@@ -21,7 +21,7 @@
 
 <script>
 
-import axios from 'axios';
+import 'axios';
 
 export default {
     methods: {
@@ -33,18 +33,18 @@ export default {
         const data = {
             name: this.namee,
           };
-        await axios({
+        await this.$axios({
           method: 'put',
-          url: `http://localhost:8000/api/customer/update/${id}`,
+          url: `/api/customer/update/${id}`,
           data: data,
         });
         // const config = { headers: {'Content-Type': 'application/json'} };
-        // const customer = await this.$axios.put(`http://localhost:8000/api/customer/update/${id}`, data, config);
+        // const customer = await this.$this.$axios.put(`/api/customer/update/${id}`, data, config);
         this.$router.push("/customers");
       }
     },
-  async asyncData({params, $axios }) {
-    const customer = await $axios.$get(`http://localhost:8000/api/customer/${params.id}`)
+  async asyncData({params}) {
+    const customer = await $this.$axios.get(`/api/customer/${params.id}`)
     const namee = customer.name
     return { customer, namee }
   }

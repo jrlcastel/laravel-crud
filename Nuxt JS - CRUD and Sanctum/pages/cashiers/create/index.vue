@@ -21,7 +21,7 @@
 
 <script>
 
-import axios from 'axios';
+import 'axios';
 
 export default {
     methods: {
@@ -34,9 +34,9 @@ export default {
         const data = {
             name: this.name,
           };
-        await axios({
+        await this.$axios({
           method: 'post',
-          url: 'http://localhost:8000/api/cashier/add/',
+          url: '/api/cashier/add/',
           data: data,
         });
         this.$router.push("/cashiers");

@@ -26,7 +26,7 @@
 
 <script>
 
-import axios from 'axios';
+import 'axios';
 
 export default {
     methods: {
@@ -39,18 +39,18 @@ export default {
             item_id: this.item_id,
             receipt_id:  this.receipt_id,
           };
-        await axios({
+        await this.$axios({
           method: 'put',
-          url: `http://localhost:8000/api/sale/update/${id}`,
+          url: `/api/sale/update/${id}`,
           data: data,
         });
         // const config = { headers: {'Content-Type': 'application/json'} };
-        // const sale = await this.$axios.put(`http://localhost:8000/api/sale/update/${id}`, data, config);
+        // const sale = await this.$this.$axios.put(`/api/sale/update/${id}`, data, config);
         this.$router.push("/sales");
       }
     },
-  async asyncData({params, $axios }) {
-    const sale = await $axios.$get(`http://localhost:8000/api/sale/${params.id}`)
+  async asyncData({params}) {
+    const sale = await this.$axios.get(`/api/sale/${params.id}`)
     const item_id = sale.item_id
     const receipt_id = sale.receipt_id
     return { sale, item_id, receipt_id }

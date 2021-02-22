@@ -33,8 +33,7 @@
 
 <script>
 
-import axios from 'axios';
-
+import 'axios';
 
 export default {
     methods: {
@@ -42,16 +41,16 @@ export default {
         await this.$nuxt.refresh()
       },
       async del(id) {
-      await axios({
+      await this.$axios({
         method: 'delete',
-        url: `http://localhost:8000/api/cashier/delete/${id}`,
+        url: `/api/cashier/delete/${id}`,
       });
-        // await this.$axios.$delete(`http://localhost:8000/api/cashier/delete/${id}`)
+        // await this.$this.$axios.$delete(`/api/cashier/delete/${id}`)
         await this.$nuxt.refresh()
       }
     },
-  async asyncData({ $axios }) {
-    const cashiers = await $axios.$get('http://127.0.0.1:8000/api/nuxtCashiers')
+  async asyncData({params, $axios}) {
+    const cashiers = await $axios.$get( `/api/nuxtCashiers` );
     return { cashiers }
   }
 }

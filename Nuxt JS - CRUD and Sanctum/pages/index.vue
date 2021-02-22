@@ -23,7 +23,8 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import this.$axios from 'this.$axios';
+import 'axios';
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
@@ -57,9 +58,9 @@ export default {
         
         try {
           console.log('Trying to logout. Please wait...');
-          await axios({
+          await this.$axios({
               method: 'post',
-              url: 'http://localhost:8000/api/logout',
+              url: '/api/logout',
               headers: {
                 'Authorization': `Bearer ${Vue.$cookies.get('userToken')}` 
               },
@@ -82,6 +83,7 @@ export default {
 
           console.log('Login method invoked.');
 
+
           const loginData = {
               email: "user1@website.com",
               password: "user1"
@@ -89,9 +91,10 @@ export default {
 
             try {
               console.log('Trying to login. Please wait...');
-              const res = await axios({
+              const res = await this.$axios({
+                // baseURL: process.env.BASE_URL,
                 method: 'post',
-                url: 'http://localhost:8000/api/sanctum/token',
+                url: '/api/sanctum/token',
                 data: loginData,
               });
               
@@ -121,9 +124,9 @@ export default {
 
             try {
               console.log('Trying to login. Please wait...');
-              const res = await axios({
+              const res = await this.$axios({
                 method: 'post',
-                url: 'http://localhost:8000/api/sanctum/token',
+                url: '/api/sanctum/token',
                 data: loginData,
               });
               
@@ -151,11 +154,12 @@ export default {
               password: "wrongpass"
             }
 
+
             try {
               console.log('Trying to login. Please wait...');
-              const res = await axios({
+              const res = await this.$axios({
                 method: 'post',
-                url: 'http://localhost:8000/api/sanctum/token',
+                url: '/api/sanctum/token',
                 data: loginData,
               });
               
